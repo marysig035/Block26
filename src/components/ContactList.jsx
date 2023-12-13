@@ -1,5 +1,4 @@
-import { useState } from "react"; 
-import {useEffect} from 'react'
+import { useState, useEffect } from "react"; 
 import ContactRow from "./ContactRow";
 
 const dummyContacts = [
@@ -8,20 +7,19 @@ const dummyContacts = [
     { id: 3, name: "BB-8", phone: "888-888-8888", email: "bb8@droids.com" },
 ];
 
-export default function ContactList() { 
+function ContactList({ setSelectedContactId }) { 
 
-    const [contacts, setContacts] = useState(dummyContacts)
+    const [contacts, setContacts] = useState([])
 
     useEffect(()=>{
         async function fetchContacts() {
             try {
-                const response = await fetch(
-                    "https://jsonplace-univclone.herokuapp.com/users"
-                  );
-                  const result = await response.json();
-                  setContacts(result);
+                const response = await fetch(`https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users`);
+                const result = await response.json();
+                setContacts(result);
+                console.log(result);
             } catch (error) {
-              console.error(error);
+                console.error(error);
             }
           }
           fetchContacts()
@@ -30,22 +28,26 @@ export default function ContactList() {
     console.log("Contacts: ", contacts)
 
     return ( 
-        <table>
-            <thead>
-                <tr>
-                    <th colSpan="3">Contact List</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Phone</td>
-                </tr>
-                {contacts.map((contact) => {
-                    return <ContactRow key={contact.id} contact={contact} />;
-                })}
-            </tbody>
-        </table>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colSpan="3">Contact List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="table-header">Name</td>
+                        <td className="table-header">Email</td>
+                        <td className="table-header">Phone</td>
+                    </tr>
+                    {contacts.map((contact) => {
+                        return <ContactRow setSelectedContactId={setSelectedContactId} key={contact.id} contact={contact}/>;
+                    })}
+                </tbody>
+            </table>
+        </div>
     ); 
 }
+
+export default ContactList; 
