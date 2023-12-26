@@ -1,5 +1,5 @@
 
-function ContactRow({ setSelectedContactId,contact }) {
+export default function ContactRow({ setSelectedContactId,contact }) {
     return (
         <tr className='table-row-link'
             onClick={() => {
@@ -12,5 +12,3 @@ function ContactRow({ setSelectedContactId,contact }) {
         </tr>
     );
 }
-
-export default ContactRow; 

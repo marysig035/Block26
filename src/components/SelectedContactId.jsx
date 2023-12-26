@@ -40,15 +40,15 @@ function SelectedContact({ selectedContactId, setSelectedContactId }) {
                         <td>Phone</td>
                     </tr>
                     <tr>
-                        <td>{contacts.name}</td>
+                        <td>{contacts.key}</td>
                         <td>{contacts.email}</td>
                         <td>{contacts.phone}</td>
                     </tr>
                 </tbody>
             </table>
-            <button onClick={() => setSelectedContactId(null)}>Go Back</button>
+            <button onClick={button}>Go Back</button>
         </div>
     ); 
 }
 
-export default SelectedContact; 
+export default SelectedContact

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react"; 
 import ContactRow from "./ContactRow";
 
@@ -7,7 +8,7 @@ const dummyContacts = [
     { id: 3, name: "BB-8", phone: "888-888-8888", email: "bb8@droids.com" },
 ];
 
-function ContactList({ setSelectedContactId }) { 
+export default function ContactList({ setSelectedContactId }) { 
 
     const [contacts, setContacts] = useState([])
 
@@ -49,5 +50,3 @@ function ContactList({ setSelectedContactId }) {
         </div>
     ); 
 }
-
-export default ContactList; 
