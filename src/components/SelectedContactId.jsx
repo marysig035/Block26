@@ -40,7 +40,7 @@ function SelectedContact({ selectedContactId, setSelectedContactId }) {
                         <td>Phone</td>
                     </tr>
                     <tr>
-                        <td>{contacts.key}</td>
+                        <td>{contacts.name}</td>
                         <td>{contacts.email}</td>
                         <td>{contacts.phone}</td>
                     </tr>
